@@ -51,7 +51,7 @@ class OrganizationsController extends Controller
             ])
         );
 
-        return Redirect::route('organizations')->with('success', 'Organization created.');
+        return Redirect::route('organizations')->with('success', __('Organization created.'));
     }
 
     public function edit(Organization $organization): Response
@@ -88,20 +88,20 @@ class OrganizationsController extends Controller
             ])
         );
 
-        return Redirect::back()->with('success', 'Organization updated.');
+        return Redirect::back()->with('success', __('Organization updated.'));
     }
 
     public function destroy(Organization $organization): RedirectResponse
     {
         $organization->delete();
 
-        return Redirect::back()->with('success', 'Organization deleted.');
+        return Redirect::back()->with('success', __('Organization deleted.'));
     }
 
     public function restore(Organization $organization): RedirectResponse
     {
         $organization->restore();
 
-        return Redirect::back()->with('success', 'Organization restored.');
+        return Redirect::back()->with('success', __('Organization restored.'));
     }
 }
