@@ -140,3 +140,10 @@ Route::get('reports', [ReportsController::class, 'index'])
 Route::get('/img/{path}', [ImagesController::class, 'show'])
     ->where('path', '.*')
     ->name('image');
+
+Route::get('/locale/{locale}', function (string $locale) {
+    abort_unless(in_array($locale, config('app.available_locales', ['en', 'fr', 'es'])), 404);
+    session(['locale' => $locale]);
+
+    return back();
+})->name('locale.switch');

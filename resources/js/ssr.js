@@ -2,6 +2,7 @@ import { createSSRApp, h } from 'vue'
 import { renderToString } from '@vue/server-renderer'
 import { createInertiaApp } from '@inertiajs/vue3'
 import createServer from '@inertiajs/vue3/server'
+import i18n from './i18n-setup';
 
 createServer((page) => createInertiaApp({
   page,
@@ -14,6 +15,6 @@ createServer((page) => createInertiaApp({
   setup({ app, props, plugin }) {
     return createSSRApp({
       render: () => h(app, props),
-    }).use(plugin)
+    }).use(plugin).use(i18n)
   },
 }))
